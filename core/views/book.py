@@ -3,7 +3,7 @@ from rest_framework.authentication import TokenAuthentication, SessionAuthentica
 
 from utils.pagination import RestPagination
 from utils.permissions import DjangoModelPermissions
-from .. import models, serializers
+from .. import models, serializers, filters
 
 
 class BookViewSet(viewsets.ReadOnlyModelViewSet):
@@ -12,3 +12,4 @@ class BookViewSet(viewsets.ReadOnlyModelViewSet):
     permission_classes = (DjangoModelPermissions, )
     queryset = models.Book.objects.order_by('id').select_related('author', 'department')
     serializer_class = serializers.Book
+    filterset_class = filters.Book

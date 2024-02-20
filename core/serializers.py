@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from core import models
+from . import models
 
 
 class Department(serializers.ModelSerializer):
