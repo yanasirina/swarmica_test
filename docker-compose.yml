@@ -1,0 +1,9 @@
+services:
+  database:
+    ports:
+      - "${DB_PORT}:5432"
+    image: postgres:16.0
+    environment:
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}

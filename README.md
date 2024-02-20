@@ -1,2 +1,30 @@
-# swarmica_test
-Тестовое задание для компании Swarmica
+# Тестовое задание для компании Swarmica
+
+### установка зависимотей:
+```console
+python3.12 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+
+### создание файла с переменными окружения:
+```console
+cat .env.example > .env
+```
+При необходимости переопределить переменные в файле
+
+### запуск необходимых контейнеров:
+```console
+docker-compose up -d 
+```
+
+### прогон миграций:
+```console
+python3 manage.py migrate 
+```
+
+### запуск проекта:
+```console
+python3 manage.py runserver 
+```
+
