@@ -15,8 +15,27 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from drf_yasg import openapi
+from drf_yasg.views import get_schema_view
+from rest_framework import permissions
+
+import core.urls
+
+
+schema_view = get_schema_view(
+   openapi.Info(
+      title="Swarmica library backend",
+      default_version='v1',
+      description='API для библиотеки (в рамках тестового задания в компании Swarmica)',
+      contact=openapi.Contact(email="yana.sirina@gmail.com"),
+   ),
+   public=True,
+   permission_classes=[permissions.AllowAny,],
+)
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path("admin/", admin.site.urls),
+    path('swagger/', schema_view.with_ui(), name='swagger'),
+    path('backend/', include(core.urls, namespace='core')),
 ]
