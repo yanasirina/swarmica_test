@@ -23,8 +23,17 @@ docker-compose up -d
 python3 manage.py migrate 
 ```
 
+### создание суперпользователя:
+```console
+python3 manage.py createsuperuser 
+```
+
+### сбор статических файлов:
+```console
+python3 manage.py collectstatic 
+```
+
 ### запуск проекта:
 ```console
 python3 manage.py runserver 
 ```
-
