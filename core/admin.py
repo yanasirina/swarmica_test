@@ -4,6 +4,7 @@ from . import models
 
 class HandedBookInline(admin.TabularInline):
     model = models.HandedBook
+    autocomplete_fields = ('book', 'client')
     extra = 0
 
 
