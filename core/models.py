@@ -39,6 +39,9 @@ class Book(models.Model):
     def __str__(self):
         return f'{self.author}: "{self.name}" ({self.publishing_year}г.)'
 
+    def is_book_in_stock(self):
+        return self.number_of_copies - self.handed_books.count() > 0
+
 
 class Client(models.Model):
     name = models.CharField('Имя', max_length=255)
