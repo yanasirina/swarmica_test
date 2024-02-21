@@ -1,3 +1,5 @@
+from datetime import date
+
 from django.db import models
 
 
@@ -36,3 +38,27 @@ class Book(models.Model):
 
     def __str__(self):
         return f'{self.author}: "{self.name}" ({self.publishing_year}г.)'
+
+
+class Client(models.Model):
+    name = models.CharField('Имя', max_length=255)
+
+    class Meta:
+        verbose_name = 'Посетитель библиотеки'
+        verbose_name_plural = 'Посетители библиотеки'
+
+    def __str__(self):
+        return self.name
+
+
+class HandedBook(models.Model):
+    book = models.ForeignKey(Book, verbose_name='Книга', on_delete=models.PROTECT, related_name='handed_books')
+    client = models.ForeignKey(Client, verbose_name='Посетитель', on_delete=models.PROTECT, related_name='handed_books')
+    handed_date = models.DateField('Дата взятия', default=date.today)
+
+    class Meta:
+        verbose_name = 'Взятая на руки книга'
+        verbose_name_plural = 'Взятые на руки книги'
+
+    def __str__(self):
+        return f'{self.book} ({self.handed_date})'
