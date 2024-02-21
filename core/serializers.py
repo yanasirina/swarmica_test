@@ -25,7 +25,7 @@ class Book(serializers.ModelSerializer):
 
 
 class Client(serializers.ModelSerializer):
-    handed_books_count = serializers.SerializerMethodField()
+    handed_books_count = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
         model = models.Client

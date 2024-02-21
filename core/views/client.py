@@ -6,7 +6,7 @@ from utils.permissions import DjangoModelPermissions
 from .. import models, serializers
 
 
-class ClientViewSet(viewsets.ReadOnlyModelViewSet):
+class ClientViewSet(viewsets.ModelViewSet):
     pagination_class = RestPagination
     authentication_classes = (TokenAuthentication, SessionAuthentication, )
     permission_classes = (DjangoModelPermissions, )
